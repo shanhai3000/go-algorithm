@@ -1,25 +1,23 @@
 package collection
 
-import "algo/object"
-
 type Stack struct {
 	head  *Node
 	next  *Node
 	_size int
 }
 
-func (s *Stack) Push(o object.Object) {
-	newNode := Node{o, nil}
+func (s *Stack) Push(val interface{}) {
+	newNode := Node{val, nil}
 	newNode.next = s.head
 	s.head = &newNode
 	s._size++
 }
-func (s *Stack) Pop() object.Object {
+func (s *Stack) Pop() interface{} {
 	if s.head != nil {
 		t := s.head
 		s.head = s.next
 		s._size--
-		return t.val
+		return t.value
 	}
 
 	return nil
