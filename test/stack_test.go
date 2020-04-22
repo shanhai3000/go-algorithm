@@ -6,7 +6,11 @@ import (
 )
 
 func TestStack(t *testing.T){
-	s := collection.Stack{}
+	s := new(collection.Stack)// new(T), return the pointer of instance
+	//fmt.Println(reflect.TypeOf(s)) //out:*collection.Stack
+	//var s collection.Stack//basic instantiation method
+	//fmt.Println(reflect.TypeOf(s))//out collection.Stack
+
 	s.Push(1)
 
 	if s.Empty() {
