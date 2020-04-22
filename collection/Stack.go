@@ -1,13 +1,17 @@
 package collection
 
+type Node struct {
+	value interface{}
+	next  *Node
+}
+
 type Stack struct {
 	head  *Node
-	next  *Node
 	_size int
 }
 
-func (s *Stack) Push(val interface{}) {
-	newNode := Node{val, nil}
+func (s *Stack) Push(value interface{}) {
+	newNode := Node{value, nil}
 	newNode.next = s.head
 	s.head = &newNode
 	s._size++
@@ -15,7 +19,7 @@ func (s *Stack) Push(val interface{}) {
 func (s *Stack) Pop() interface{} {
 	if s.head != nil {
 		t := s.head
-		s.head = s.next
+		s.head = s.head.next
 		s._size--
 		return t.value
 	}
