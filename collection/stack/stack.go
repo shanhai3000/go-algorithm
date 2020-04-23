@@ -1,4 +1,4 @@
-package collection
+package stack
 
 type Node struct {
 	value interface{}
