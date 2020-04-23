@@ -7,13 +7,13 @@ type Node struct {
 
 type Queue struct {
 	root  *Node
-	tail *Node
+	tail  *Node
 	_size uint
 }
 
-func (q *Queue) Top() *Node {
+func (q *Queue) Top() interface{} {
 	if q._size > 0 {
-		return q.root
+		return q.root.value
 	}
 	return nil
 }
@@ -25,8 +25,15 @@ func (q *Queue) Pop() {
 	}
 }
 
-func (q *Queue) Push(e interface{}){
-	q.tail.next = &Node{e, nil}
+func (q *Queue) Push(e interface{}) {
+	t :=  &Node{e, nil}
+	if q.root == nil {
+		q.root = t
+		q.tail = t
+	}else{
+		q.tail.next = t
+		q.tail = q.tail.next
+	}
 	q._size++
 }
 
