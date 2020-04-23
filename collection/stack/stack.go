@@ -1,17 +1,19 @@
 package stack
 
-type Node struct {
-	value interface{}
-	next  *Node
-}
+type (
+	node struct {
+		value interface{}
+		next  *node
+	}
 
-type Stack struct {
-	head  *Node
-	_size int
-}
+	Stack struct {
+		head  *node
+		_size int
+	}
+)
 
 func (s *Stack) Push(value interface{}) {
-	newNode := Node{value, nil}
+	newNode := node{value, nil}
 	newNode.next = s.head
 	s.head = &newNode
 	s._size++

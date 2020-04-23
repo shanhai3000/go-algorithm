@@ -1,15 +1,17 @@
 package queue
 
-type Node struct {
-	value interface{}
-	next  *Node
-}
+type (
+	node struct {
+		value interface{}
+		next  *node
+	}
 
-type Queue struct {
-	root  *Node
-	tail  *Node
-	_size uint
-}
+	Queue struct {
+		root  *node
+		tail  *node
+		_size uint
+	}
+)
 
 func (q *Queue) Top() interface{} {
 	if q._size > 0 {
@@ -26,11 +28,11 @@ func (q *Queue) Pop() {
 }
 
 func (q *Queue) Push(e interface{}) {
-	t :=  &Node{e, nil}
+	t := &node{e, nil}
 	if q.root == nil {
 		q.root = t
 		q.tail = t
-	}else{
+	} else {
 		q.tail.next = t
 		q.tail = q.tail.next
 	}
