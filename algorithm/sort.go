@@ -36,6 +36,7 @@ func partition(arr []int, l int, r int) *[2]int {
 }
 
 /**
+基于完全二叉堆实现的一种排序算法, vector的形+tree的神
 		1
       /    \
 	 2       33
@@ -58,7 +59,7 @@ func HeapSort(arr []int) {
 	//the max number is the root node
 	for i := length - 1; i > 0; i-- {
 		util.Swap(arr, i, 0)
-		percolateDown(arr, 0, i)
+		percolateDown(arr, 1, i)
 	}
 }
 
@@ -92,29 +93,53 @@ func heapify1(arr []int, i int, len int) {
 	}
 }
 
+//上滤(顺序是自下向上,与父节点比较)适用于新增元素时更新堆的序
+func percolateUp(arr []int, i int, len int) {
+	//i 为新插入元素的索引
+	num := arr[i]
+	for i >= 0 {
+		//任意节点的父节点为 (i-1)>>1
+		j := (i - 1) >> 1
+		if j >= 0 && arr[j] < num {
+			//Swap 效率不高，执行下移操作，最后赋值，nlogn ==》 logn
+			arr[i] = arr[j]
+			i = j
+		} else {
+			arr[i] = num
+			break
+		}
+	}
+}
+
 /**
-下滤
+自下向上的上滤（逐一和父节点比较）
+下滤（和两个子节点比较）
+最坏情况是每个节点都下滤至叶子节点（当原始完全二叉堆是降序排列时）
+
 */
 func percolateDown(arr []int, i int, len int) {
+	num := arr[i]
 	var childIdx int
 	var nextIdx int
 	var move bool
-	for ; i < len; {
+	for i < len {
 		move = false
 		childIdx = i<<1 + 1
-		if childIdx < len && arr[childIdx] > arr[i] {
+		if childIdx < len && arr[childIdx] > num {
+			arr[i] = arr[childIdx]
 			nextIdx = childIdx
 			move = true
 		}
 		childIdx = i<<1 + 2
-		if childIdx < len && arr[childIdx] > arr[i] && arr[childIdx] > arr[childIdx-1] {
+		if childIdx < len && arr[childIdx] > num && arr[childIdx] > arr[childIdx-1] {
+			arr[i] = arr[childIdx]
 			nextIdx = childIdx
 			move = true
 		}
 		if !move {
+			arr[i] = num
 			break
 		}
-		util.Swap(arr, i, nextIdx)
 		i = nextIdx
 	}
 }
