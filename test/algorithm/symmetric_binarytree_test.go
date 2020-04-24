@@ -1,6 +1,7 @@
 package algorithm
 
 import (
+	"algo/algorithm"
 	"algo/collection/node"
 	"testing"
 	"time"
@@ -26,7 +27,7 @@ func TestIsSymmetric1(t *testing.T) {
 	root.Right.Right = nil
 
 	begin := time.Now()
-	ret := IsSymmetric0(root)
+	ret := algorithm.IsSymmetric0(root)
 	if ret {
 		t.Log("IsSymmetric0() Ok, use ", time.Since(begin))
 	} else {
@@ -34,7 +35,7 @@ func TestIsSymmetric1(t *testing.T) {
 	}
 
 	begin = time.Now()
-	ret = IsSymmetric1(root)
+	ret = algorithm.IsSymmetric1(root)
 	if ret {
 		t.Log("IsSymmetric1() Ok, use ", time.Since(begin))
 	} else {

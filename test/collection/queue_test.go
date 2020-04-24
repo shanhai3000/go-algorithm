@@ -1,4 +1,4 @@
-package test
+package collection
 
 import (
 	"algo/collection/queue"
