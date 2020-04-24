@@ -21,12 +21,13 @@ func TestQuickSort(t *testing.T) {
 
 func TestHeapSort(t *testing.T) {
 	var arr []int
-	for i := 0; i < 100000000; i++ {
+	for i := 0; i < 100000; i++ {
 		arr = append(arr, rand.Intn(1000))
 	}
 	begin := time.Now()
 	algorithm.HeapSort(arr)
 	use := time.Since(begin)
 	fmt.Println("use ", use)
-}/* Sort 100000000 elements using 31.8s */
+	fmt.Println(arr)
+}/* Sort 100000000 elements using 27.311040202s */
 
