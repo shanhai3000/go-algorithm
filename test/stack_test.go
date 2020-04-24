@@ -30,6 +30,5 @@ func TestStack(t *testing.T){
 	}else{
 		t.Log("Pop() Ok", i)
 	}
-
-
 }
+

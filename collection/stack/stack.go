@@ -2,28 +2,28 @@ package stack
 
 type (
 	node struct {
-		value interface{}
-		next  *node
+		Value interface{}
+		Next  *node
 	}
 
 	Stack struct {
-		head  *node
+		root  *node
 		_size int
 	}
 )
 
 func (s *Stack) Push(value interface{}) {
 	newNode := node{value, nil}
-	newNode.next = s.head
-	s.head = &newNode
+	newNode.Next = s.root
+	s.root = &newNode
 	s._size++
 }
 func (s *Stack) Pop() interface{} {
-	if s.head != nil {
-		t := s.head
-		s.head = s.head.next
+	if s.root != nil {
+		t := s.root
+		s.root = s.root.Next
 		s._size--
-		return t.value
+		return t.Value
 	}
 
 	return nil
