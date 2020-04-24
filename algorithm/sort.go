@@ -1,5 +1,7 @@
 package algorithm
 
+import "algo/algorithm/util"
+
 func QuickSort(arr []int) {
 	quickSort(arr, 0, len(arr)-1)
 }
@@ -17,24 +19,18 @@ func partition(arr []int, l int, r int) *[2]int {
 	for ; l < pivotR; {
 		if arr[l] < arr[r] {
 			pivotL++
-			Swap(arr, pivotL, l)
+			util.Swap(arr, pivotL, l)
 			l++
 		} else if arr[l] > arr[r] {
 			pivotR--
-			Swap(arr, l, pivotR)
+			util.Swap(arr, l, pivotR)
 		} else {
 			l++
 		}
 	}
-	Swap(arr, pivotR, r)
+	util.Swap(arr, pivotR, r)
 	pivotL++
 	return &[2]int{pivotL, pivotR}
 }
 
-func Swap(arr []int, i int, j int) {
-	if arr[i] != arr[j] {
-		arr[i] ^= arr[j]
-		arr[j] ^= arr[i]
-		arr[i] ^= arr[j]
-	}
-}
+
