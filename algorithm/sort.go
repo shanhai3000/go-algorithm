@@ -59,7 +59,7 @@ func HeapSort(arr []int) {
 	//the max number is the root node
 	for i := length - 1; i > 0; i-- {
 		util.Swap(arr, i, 0)
-		percolateDown(arr, 1, i)
+		percolateDown(arr, 0, i)
 	}
 }
 
