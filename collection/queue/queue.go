@@ -24,6 +24,9 @@ func (q *Queue) Pop() {
 	if q._size > 0 {
 		q.root = q.root.next
 		q._size--
+		if q._size == 0 {
+			q.tail = nil
+		}
 	}
 }
 
