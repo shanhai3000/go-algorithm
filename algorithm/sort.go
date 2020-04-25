@@ -112,10 +112,8 @@ func percolateUp(arr []int, i int, len int) {
 }
 
 /**
-自下向上的上滤（逐一和父节点比较）
-下滤（和两个子节点比较）
-最坏情况是每个节点都下滤至叶子节点（当原始完全二叉堆是降序排列时）
-
+上滤（逐一和父节点比较）, 并向上移动或停止
+下滤（和两个子节点比较, 并向下移动或停止）Floyd 算法
 */
 func percolateDown(arr []int, i int, len int) {
 	num := arr[i]
