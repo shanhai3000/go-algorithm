@@ -1,11 +1,20 @@
 package algorithm
 
 import (
+	"algo/algorithm"
 	"algo/algorithm/util"
+	"math/rand"
 	"testing"
+	"time"
 )
 
 func TestArrayMax2(t *testing.T) {
-	arr := []int{1,2,3,4,5}
-	util.DD(ArrayMax2(arr))
+	var arr []int
+	for i := 0; i < 1000000; i ++{
+		arr = append(arr, rand.Intn(1000000))
+	}
+	begin := time.Now()
+	ret := algorithm.ArrayMax2(arr)
+	util.DD(time.Since(begin))
+	util.DD(ret)
 }
