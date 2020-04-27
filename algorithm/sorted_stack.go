@@ -3,7 +3,6 @@ package algorithm
 import "algo/collection/node"
 
 type (
-
 	SortedStack struct {
 		Root *node.Node
 		Mix  *node.Node
