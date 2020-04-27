@@ -12,18 +12,26 @@ type (
 	}
 )
 
+func (s *Stack) Peek() interface{} {
+	if s.root != nil {
+		return s.root.Value
+	}
+	return nil
+}
+
 func (s *Stack) Push(value interface{}) {
 	newNode := node{value, nil}
 	newNode.Next = s.root
 	s.root = &newNode
 	s._size++
 }
+
 func (s *Stack) Pop() interface{} {
 	if s.root != nil {
-		t := s.root
+		_value := s.root.Value
 		s.root = s.root.Next
 		s._size--
-		return t.Value
+		return _value
 	}
 
 	return nil
