@@ -10,7 +10,12 @@ package node
  * };
  */
 type TreeNode struct {
-	Val int
-	Left *TreeNode
+	Val   int
+	Left  *TreeNode
 	Right *TreeNode
+}
+
+type Node struct {
+	Val  int
+	Next *Node
 }
