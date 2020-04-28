@@ -1,13 +1,10 @@
 package stack
 
-type (
-	node struct {
-		Value interface{}
-		Next  *node
-	}
+import "algo/ds/collection/node"
 
+type (
 	Stack struct {
-		root  *node
+		root  *node.Node
 		_size int
 	}
 )
@@ -20,7 +17,7 @@ func (s *Stack) Peek() interface{} {
 }
 
 func (s *Stack) Push(value interface{}) {
-	newNode := node{value, nil}
+	newNode := node.Node{Value: value}
 	newNode.Next = s.root
 	s.root = &newNode
 	s._size++

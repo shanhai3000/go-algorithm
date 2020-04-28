@@ -16,6 +16,6 @@ type TreeNode struct {
 }
 
 type Node struct {
-	Val  int
-	Next *Node
+	Value interface{}
+	Next  *Node
 }
