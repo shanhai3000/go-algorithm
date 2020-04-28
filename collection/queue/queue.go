@@ -45,3 +45,7 @@ func (q *Queue) Push(e interface{}) {
 func (q *Queue) Size() uint {
 	return q._size
 }
+
+func (q *Queue) Empty() bool {
+	return q._size == 0
+}
