@@ -1,13 +1,11 @@
 package stack
 
-import "algo/ds/collection/node"
+import "algo/collection/node"
 
-type (
-	Stack struct {
-		root  *node.Node
-		_size int
-	}
-)
+type Stack struct {
+	root  *node.Node
+	_size int
+}
 
 func (s *Stack) Peek() interface{} {
 	if s.root != nil {
