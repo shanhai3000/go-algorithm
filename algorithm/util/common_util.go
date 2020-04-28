@@ -1,9 +1,12 @@
 package util
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
-func DD(in ...interface{}) {
-	fmt.Println(in)
+func DD(a ...interface{}) {
+	fmt.Fprintln(os.Stdout, a...)
 }
 
 func MaxInts(i int, j int) int {
