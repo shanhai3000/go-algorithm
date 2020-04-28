@@ -83,15 +83,16 @@ func PostOrderTraverse0(root *node.TreeNode, visitor func(*node.TreeNode)) {
 func LevelOrderTraverse(root *node.TreeNode, visitor func(*node.TreeNode)) {
 	q := new(queue.Queue)
 	q.Push(root)
+	var x *node.TreeNode
 	for !q.Empty() {
-		n := q.Top().(*node.TreeNode)
+		x = q.Top().(*node.TreeNode)
 		q.Pop()
-		visitor(n)
-		if n.Left != nil {
-			q.Push(n.Left)
+		visitor(x)
+		if x.Left != nil {
+			q.Push(x.Left)
 		}
-		if n.Right != nil {
-			q.Push(n.Right)
+		if x.Right != nil {
+			q.Push(x.Right)
 		}
 	}
 }
