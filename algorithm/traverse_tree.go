@@ -18,7 +18,7 @@ func PreOrderTraverse0(root *node.TreeNode, visitor func(*node.TreeNode)){
 	}
 }/*recursion version*/
 
-func PreOrderTraverse1(root *node.TreeNode, visitor func(treeNode *node.TreeNode)) {
+func PreOrderTraverse1(root *node.TreeNode, visitor func(*node.TreeNode)) {
 	s := new(stack.Stack)
 	s.Push(root)
 	for ; !s.Empty(); {
@@ -32,3 +32,39 @@ func PreOrderTraverse1(root *node.TreeNode, visitor func(treeNode *node.TreeNode
 		}
 	}
 }
+/**
+		10
+     5      15
+   1   6   12  16
+*/
+func MidOrderTraverse0(root *node.TreeNode, visitor func(*node.TreeNode)){
+	if root != nil 	{
+		if root.Left != nil {
+			MidOrderTraverse0(root.Left, visitor)
+		}
+		visitor(root)
+		if root.Right != nil {
+			MidOrderTraverse0(root.Right, visitor)
+		}
+	}
+}/*recursion version*/
+
+func MidOrderTraverse1(root *node.TreeNode, visitor func(*node.TreeNode)){
+	s := new(stack.Stack)
+	x := root
+	for  {
+		goAlongLeftBranch(x, s)
+		if s.Empty(){
+			break
+		}
+		x = s.Pop().(*node.TreeNode)
+		visitor(x)
+		x = x.Right//可能为空，留意处理手法，以及这样写的目的
+	}
+}/*	iteration version*/
+ func goAlongLeftBranch(root *node.TreeNode, s *stack.Stack){
+ 	for root!= nil{
+ 		s.Push(root)
+ 		root=root.Left
+	}
+ }
