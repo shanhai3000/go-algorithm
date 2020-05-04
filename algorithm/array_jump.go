@@ -19,16 +19,11 @@ func Jump(nums []int) int {
 		visited[i] = 0
 	}
 	for i := 0; i < len(nums); i++ {
-		jump0(nums, i, visited)
+		for j := i + 1; j <= i+nums[i] && j < len(visited); j++ {
+			if visited[j] == 0 {
+				visited[j] = visited[i] + 1
+			}
+		}
 	}
 	return visited[len(visited)-1]
 }
-func jump0(nums []int, pos int, visited []int) {
-	for i := pos+1; i <= pos+nums[pos] && i < len(visited); i++ {
-		if visited[i] == 0 {
-			visited[i] = visited[pos] + 1
-		}
-	}
-}
-
-
